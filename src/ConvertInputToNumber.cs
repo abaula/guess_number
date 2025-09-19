@@ -1,11 +1,13 @@
 using GuessNumber.Abstractions;
 
-namespace GuessNumber;
-
-class ConvertInputToNumber : IConvertInputToNumber
+namespace GuessNumber
 {
-    public int Execute(string value)
+    class ConvertInputToNumber : IConvertInputToNumber
     {
-        throw new NotImplementedException();
+        public int Execute(string value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+

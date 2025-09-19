@@ -1,9 +1,16 @@
-﻿namespace GuessNumber;
+﻿using GuessNumber.Abstractions;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace GuessNumber;
 
 class Program
 {
     static void Main()
     {
-        Console.WriteLine("Hello, World!");
+        var services = new ServiceCollection();
+        ModuleBootstraper.Setup(services);
+        var serviceProvider = services.BuildServiceProvider();
+        var guessService = serviceProvider.GetRequiredService<IGuess>();
+        guessService.Execute();
     }
 }
