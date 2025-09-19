@@ -3,7 +3,7 @@ using GuessNumber.Abstractions;
 namespace GuessNumber
 {
     class PrintRules(IGetRulesText getRulesText,
-        IWriteLineToConsole writeLineToConsole)
+        IWriteToConsole writeToConsole)
         : IPrintRules
     {
         public void Execute()
@@ -13,7 +13,7 @@ namespace GuessNumber
             if (string.IsNullOrWhiteSpace(rulesText))
                 return;
 
-            writeLineToConsole.Execute(rulesText);
+            writeToConsole.Execute(rulesText);
         }
     }
 }

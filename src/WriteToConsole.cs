@@ -2,7 +2,7 @@ using GuessNumber.Abstractions;
 
 namespace GuessNumber
 {
-    class WriteLineToConsole : IWriteLineToConsole
+    class WriteToConsole : IWriteToConsole
     {
         public void Execute(string? value)
         {

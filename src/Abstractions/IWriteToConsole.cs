@@ -1,7 +1,7 @@
 
 namespace GuessNumber.Abstractions
 {
-    interface IWriteLineToConsole
+    interface IWriteToConsole
     {
         void Execute(string? value);
     }
