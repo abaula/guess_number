@@ -1,16 +1,17 @@
 ﻿using GuessNumber.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GuessNumber;
-
-class Program
+namespace GuessNumber
 {
-    static void Main()
+    class Program
     {
-        var services = new ServiceCollection();
-        ModuleBootstraper.Setup(services);
-        var serviceProvider = services.BuildServiceProvider();
-        var guessService = serviceProvider.GetRequiredService<IGuess>();
-        guessService.Execute();
+        static void Main()
+        {
+            var services = new ServiceCollection();
+            ModuleBootstraper.Setup(services);
+            var serviceProvider = services.BuildServiceProvider();
+            var guessService = serviceProvider.GetRequiredService<IGuess>();
+            guessService.Execute();
+        }
     }
 }

@@ -11,8 +11,12 @@ namespace GuessNumber
             services.AddScoped<ICheckInput, CheckInput>();
             services.AddScoped<IConvertInputToNumber, ConvertInputToNumber>();
             services.AddScoped<IPrintRules, PrintRules>();
-            services.AddScoped<IGetRulesText, GetRulesText>();
+            services.AddScoped<IGetResourceText, GetResourceText>();
             services.AddScoped<IWriteToConsole, WriteToConsole>();
+            services.AddScoped<IChooseContinueOrExit, ChooseContinueOrExit>();
+            services.AddScoped<IPrintBye, PrintBye>();
+            services.AddScoped<IPlay, Play>();
+            services.AddScoped<IPrintChooseContinueOrExit, PrintChooseContinueOrExit>();
         }
     }
 }

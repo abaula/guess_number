@@ -3,13 +3,13 @@ using GuessNumber.Abstractions;
 
 namespace GuessNumber
 {
-    class GetRulesText : IGetRulesText
+    class GetResourceText : IGetResourceText
     {
-        public string? Execute()
+        public string? Execute(string resourceName)
         {
             var assembly = Assembly.GetExecutingAssembly();
 
-            using (var stream = assembly.GetManifestResourceStream(AppConst.Resources.Rules))
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
             {
                 if (stream == default)
                     return default;

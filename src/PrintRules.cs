@@ -2,13 +2,13 @@ using GuessNumber.Abstractions;
 
 namespace GuessNumber
 {
-    class PrintRules(IGetRulesText getRulesText,
+    class PrintRules(IGetResourceText getResourceText,
         IWriteToConsole writeToConsole)
         : IPrintRules
     {
         public void Execute()
         {
-            var rulesText = getRulesText.Execute();
+            var rulesText = getResourceText.Execute(AppConst.Resources.Rules);
 
             if (string.IsNullOrWhiteSpace(rulesText))
                 return;
