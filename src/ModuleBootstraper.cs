@@ -8,7 +8,6 @@ namespace GuessNumber
         public static void Setup(IServiceCollection services)
         {
             services.AddScoped<IGuess, Guess>();
-            services.AddScoped<ICheckInput, CheckInput>();
             services.AddScoped<IConvertInputToNumber, ConvertInputToNumber>();
             services.AddScoped<IPrintRules, PrintRules>();
             services.AddScoped<IGetResourceText, GetResourceText>();
@@ -17,6 +16,21 @@ namespace GuessNumber
             services.AddScoped<IPrintBye, PrintBye>();
             services.AddScoped<IPlay, Play>();
             services.AddScoped<IPrintChooseContinueOrExit, PrintChooseContinueOrExit>();
+            services.AddScoped<IGenerateTask, GenerateTask>();
+            services.AddScoped<IPrintGameTask, PrintGameTask>();
+            services.AddScoped<IGetUserAnswer, GetUserAnswer>();
+            services.AddScoped<ICheckUserAnswer, CheckUserAnswer>();
+            services.AddScoped<IPrintAnswerIsCorrect, PrintAnswerIsCorrect>();
+            services.AddScoped<IPrintAnswerIsIncorrect, PrintAnswerIsIncorrect>();
+            services.AddScoped<IGetUserAnswerInput, GetUserAnswerInput>();
+            services.AddScoped<IPrintNumberNeeded, PrintNumberNeeded>();
+            services.AddSingleton<IGetRandomInt, GetRandomInt>();
+            services.AddScoped<IGenerateAdditionProblem, GenerateAdditionProblem>();
+            services.AddScoped<IGenerateSubstractionProblem, GenerateSubstractionProblem>();
+            services.AddScoped<IGenerateMultiplicationProblem, GenerateMultiplicationProblem>();
+            services.AddScoped<IGenerateDivisionProblem, GenerateDivisionProblem>();
+            services.AddScoped<ICreateGameTask, CreateGameTask>();
+            services.AddSingleton<IConvertNumberToStringOrQuestionSign, ConvertNumberToStringOrQuestionSign>();
         }
     }
 }

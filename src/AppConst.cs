@@ -8,6 +8,16 @@ namespace GuessNumber
             public const string Rules = "GuessNumber.Resources.Rules.txt";
             public const string Bye = "GuessNumber.Resources.Bye.txt";
             public const string ChooseContinueOrExit = "GuessNumber.Resources.ChooseContinueOrExit.txt";
+            public const string NumberNeeded = "GuessNumber.Resources.NumberNeeded.txt";
+            public const string AnswerIsCorrectTemplate = "GuessNumber.Resources.AnswerIsCorrectTemplate.txt";
+            public const string AnswerIsIncorrectTemplate = "GuessNumber.Resources.AnswerIsIncorrectTemplate.txt";
+            public const string GameTaskTemplate = "GuessNumber.Resources.GameTaskTemplate.txt";
+        }
+
+        public static class Placeholders
+        {
+            public const string GameTask = "__GAME_TASK__";
+            public const string Answer = "__ANSWER__";
         }
     }
 }

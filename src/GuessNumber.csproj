@@ -16,6 +16,10 @@
     <EmbeddedResource Include="Resources\Rules.txt" />
     <EmbeddedResource Include="Resources\Bye.txt" />
     <EmbeddedResource Include="Resources\ChooseContinueOrExit.txt" />
+    <EmbeddedResource Include="Resources\NumberNeeded.txt" />
+    <EmbeddedResource Include="Resources\AnswerIsCorrectTemplate.txt" />
+    <EmbeddedResource Include="Resources\AnswerIsIncorrectTemplate.txt" />
+    <EmbeddedResource Include="Resources\GameTaskTemplate.txt" />
   </ItemGroup>
 
 </Project>

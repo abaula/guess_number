@@ -2,18 +2,26 @@ using GuessNumber.Abstractions;
 
 namespace GuessNumber
 {
-    class PrintRules(IGetResourceText getResourceText,
-        IWriteToConsole writeToConsole)
-        : IPrintRules
+    class PrintRules : IPrintRules
     {
+        private readonly IGetResourceText _getResourceText;
+        private readonly IWriteToConsole _writeToConsole;
+
+        public PrintRules(IGetResourceText getResourceText,
+            IWriteToConsole writeToConsole)
+        {
+            _getResourceText = getResourceText;
+            _writeToConsole = writeToConsole;
+        }
+
         public void Execute()
         {
-            var rulesText = getResourceText.Execute(AppConst.Resources.Rules);
+            var message = _getResourceText.Execute(AppConst.Resources.Rules);
 
-            if (string.IsNullOrWhiteSpace(rulesText))
+            if (string.IsNullOrWhiteSpace(message))
                 return;
 
-            writeToConsole.Execute(rulesText);
+            _writeToConsole.Execute(message);
         }
     }
 }

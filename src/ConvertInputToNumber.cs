@@ -4,9 +4,12 @@ namespace GuessNumber
 {
     class ConvertInputToNumber : IConvertInputToNumber
     {
-        public int Execute(string value)
+        public int? Execute(string value)
         {
-            throw new NotImplementedException();
+            if (int.TryParse(value, out int result))
+                return result;
+
+            return default;
         }
     }
 }

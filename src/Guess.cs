@@ -2,28 +2,40 @@ using GuessNumber.Abstractions;
 
 namespace GuessNumber
 {
-    class Guess(IPrintRules printRules,
-        IPrintBye printBye,
-        IChooseContinueOrExit chooseContinueOrExit,
-        IPlay play)
-        : IGuess
+    class Guess : IGuess
     {
+        private readonly IPrintRules _printRules;
+        private readonly IPrintBye _printBye;
+        private readonly IChooseContinueOrExit _chooseContinueOrExit;
+        private readonly IPlay _play;
+
+        public Guess(IPrintRules printRules,
+            IPrintBye printBye,
+            IChooseContinueOrExit chooseContinueOrExit,
+            IPlay play)
+        {
+            _printRules = printRules;
+            _printBye = printBye;
+            _chooseContinueOrExit = chooseContinueOrExit;
+            _play = play;
+        }
+
         public void Execute()
         {
             // Печатаем правила игры.
-            printRules.Execute();
+            _printRules.Execute();
 
             // Играем.
             var continueOrExit = ContinueOrExit.Continue;
 
             while (continueOrExit == ContinueOrExit.Continue)
             {
-                play.Execute();
-                continueOrExit = chooseContinueOrExit.Execute();
+                _play.Execute();
+                continueOrExit = _chooseContinueOrExit.Execute();
             }
 
             // Печатаем прощание.
-            printBye.Execute();
+            _printBye.Execute();
         }
     }
 }

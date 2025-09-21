@@ -2,24 +2,26 @@ using GuessNumber.Abstractions;
 
 namespace GuessNumber
 {
-    class PrintBye : IPrintBye
+    class PrintAnswerIsCorrect : IPrintAnswerIsCorrect
     {
         private readonly IGetResourceText _getResourceText;
         private readonly IWriteToConsole _writeToConsole;
 
-        public PrintBye(IGetResourceText getResourceText,
+        public PrintAnswerIsCorrect(IGetResourceText getResourceText,
             IWriteToConsole writeToConsole)
         {
             _getResourceText = getResourceText;
             _writeToConsole = writeToConsole;
         }
 
-        public void Execute()
+        public void Execute(int answer)
         {
-            var message = _getResourceText.Execute(AppConst.Resources.Bye);
+            var template = _getResourceText.Execute(AppConst.Resources.AnswerIsCorrectTemplate);
 
-            if (string.IsNullOrWhiteSpace(message))
+            if (string.IsNullOrWhiteSpace(template))
                 return;
+
+            var message = template.Replace(AppConst.Placeholders.Answer, answer.ToString());
 
             _writeToConsole.Execute(message);
         }

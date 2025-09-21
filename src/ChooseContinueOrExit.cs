@@ -2,13 +2,19 @@ using GuessNumber.Abstractions;
 
 namespace GuessNumber
 {
-    class ChooseContinueOrExit(IPrintChooseContinueOrExit printChooseContinueOrExit)
-        : IChooseContinueOrExit
+    class ChooseContinueOrExit : IChooseContinueOrExit
     {
+        private readonly IPrintChooseContinueOrExit _printChooseContinueOrExit;
+
+        public ChooseContinueOrExit(IPrintChooseContinueOrExit printChooseContinueOrExit)
+        {
+            _printChooseContinueOrExit = printChooseContinueOrExit;
+        }
+
         public ContinueOrExit Execute()
         {
             // Печатаем правила выбора решения продолжить или выйти.
-            printChooseContinueOrExit.Execute();
+            _printChooseContinueOrExit.Execute();
 
             // Получаем и обрабатываем решение пользователя.
             var key = Console.ReadKey(true);

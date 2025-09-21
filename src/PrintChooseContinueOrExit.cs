@@ -2,18 +2,26 @@ using GuessNumber.Abstractions;
 
 namespace GuessNumber
 {
-    class PrintChooseContinueOrExit(IGetResourceText getResourceText,
-        IWriteToConsole writeToConsole)
-        : IPrintChooseContinueOrExit
+    class PrintChooseContinueOrExit : IPrintChooseContinueOrExit
     {
+        private readonly IGetResourceText _getResourceText;
+        private readonly IWriteToConsole _writeToConsole;
+
+        public PrintChooseContinueOrExit(IGetResourceText getResourceText,
+            IWriteToConsole writeToConsole)
+        {
+            _getResourceText = getResourceText;
+            _writeToConsole = writeToConsole;
+        }
+
         public void Execute()
         {
-            var chooseContinueOrExitText = getResourceText.Execute(AppConst.Resources.ChooseContinueOrExit);
+            var message = _getResourceText.Execute(AppConst.Resources.ChooseContinueOrExit);
 
-            if (string.IsNullOrWhiteSpace(chooseContinueOrExitText))
+            if (string.IsNullOrWhiteSpace(message))
                 return;
 
-            writeToConsole.Execute(chooseContinueOrExitText);
+            _writeToConsole.Execute(message);
         }
     }
 }
