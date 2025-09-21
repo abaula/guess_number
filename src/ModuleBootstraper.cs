@@ -7,7 +7,7 @@ namespace GuessNumber
     {
         public static void Setup(IServiceCollection services)
         {
-            services.AddScoped<IGuess, Guess>();
+            services.AddScoped<IGuessGame, GuessGame>();
             services.AddScoped<IConvertInputToNumber, ConvertInputToNumber>();
             services.AddScoped<IPrintRules, PrintRules>();
             services.AddScoped<IGetResourceText, GetResourceText>();

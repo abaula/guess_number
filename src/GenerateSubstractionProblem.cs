@@ -18,16 +18,14 @@ namespace GuessNumber
         public GameTask Execute()
         {
             var c = _getRandomInt.Execute(0, 9);
-            var b = _getRandomInt.Execute(0, c);
+            var b = _getRandomInt.Execute(0, 9);
             var a = c + b;
 
-            switch (_getRandomInt.Execute(1, 3))
+            switch (_getRandomInt.Execute(1, 2))
             {
                 case 1:
-                    return _createGameTask.Execute(default, b, c, a, Operation);
-                case 2:
                     return _createGameTask.Execute(a, default, c, b, Operation);
-                case 3:
+                case 2:
                     return _createGameTask.Execute(a, b, default, c, Operation);
                 default:
                     throw new InvalidOperationException();

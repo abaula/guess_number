@@ -1,7 +1,7 @@
 
 namespace GuessNumber.Abstractions
 {
-    interface IGuess
+    interface IGuessGame
     {
         void Execute();
     }

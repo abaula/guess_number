@@ -2,6 +2,7 @@ using GuessNumber.Abstractions;
 
 namespace GuessNumber
 {
+    /// <inheritdoc/>
     class GenerateDivisionProblem : IGenerateDivisionProblem
     {
         private const string Operation = "/";

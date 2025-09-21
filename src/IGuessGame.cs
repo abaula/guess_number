@@ -2,14 +2,14 @@ using GuessNumber.Abstractions;
 
 namespace GuessNumber
 {
-    class Guess : IGuess
+    class GuessGame : IGuessGame
     {
         private readonly IPrintRules _printRules;
         private readonly IPrintBye _printBye;
         private readonly IChooseContinueOrExit _chooseContinueOrExit;
         private readonly IPlay _play;
 
-        public Guess(IPrintRules printRules,
+        public GuessGame(IPrintRules printRules,
             IPrintBye printBye,
             IChooseContinueOrExit chooseContinueOrExit,
             IPlay play)

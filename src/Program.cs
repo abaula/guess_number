@@ -10,8 +10,8 @@ namespace GuessNumber
             var services = new ServiceCollection();
             ModuleBootstraper.Setup(services);
             var serviceProvider = services.BuildServiceProvider();
-            var guessService = serviceProvider.GetRequiredService<IGuess>();
-            guessService.Execute();
+            var guessGame = serviceProvider.GetRequiredService<IGuessGame>();
+            guessGame.Execute();
         }
     }
 }
