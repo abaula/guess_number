@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <InternalsVisibleTo Include="GuessNumberTests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
   </ItemGroup>
 
   <ItemGroup>
