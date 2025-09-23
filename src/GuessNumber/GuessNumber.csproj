@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="GuessNumberTests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="Resources\Rules.txt" />
     <EmbeddedResource Include="Resources\Bye.txt" />
     <EmbeddedResource Include="Resources\ChooseContinueOrExit.txt" />
