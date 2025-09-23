@@ -25,7 +25,8 @@ namespace GuessNumberTests
             sut.Execute();
 
             // Assert
-            mockCreateGameTask.Verify(x => x.Execute(default, 3, 5, 2, "+"), Times.Once());
+            mockGetRandomInt.Verify(x => x.Execute(It.IsAny<int>(), It.IsAny<int>()), Times.Exactly(3));
+            mockCreateGameTask.Verify(x => x.Execute(It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int>(), "+"), Times.Once());
         }
 
         [Fact]
