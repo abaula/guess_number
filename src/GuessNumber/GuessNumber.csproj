@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>GuessNumber</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="GuessNumberTests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Rules.txt" />
+    <EmbeddedResource Include="Resources\Bye.txt" />
+    <EmbeddedResource Include="Resources\ChooseContinueOrExit.txt" />
+    <EmbeddedResource Include="Resources\NumberNeeded.txt" />
+    <EmbeddedResource Include="Resources\AnswerIsCorrectTemplate.txt" />
+    <EmbeddedResource Include="Resources\AnswerIsIncorrectTemplate.txt" />
+    <EmbeddedResource Include="Resources\GameTaskTemplate.txt" />
+  </ItemGroup>
+
+</Project>

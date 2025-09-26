@@ -1,0 +1,3 @@
+Ваш ответ: __ANSWER__
+Ответ неверный. Попробуйте ещё раз.
+VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
