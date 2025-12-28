@@ -5,9 +5,9 @@ namespace GuessNumber
     /// <inheritdoc/>
     class CreateGameTask : ICreateGameTask
     {
-        private readonly IConvertNumberToStringOrQuestionSign _convertNumber;
+        private readonly Lazy<IConvertNumberToStringOrQuestionSign> _convertNumber;
 
-        public CreateGameTask(IConvertNumberToStringOrQuestionSign convertNumber)
+        public CreateGameTask(Lazy<IConvertNumberToStringOrQuestionSign> convertNumber)
         {
             _convertNumber = convertNumber;
         }
@@ -16,7 +16,7 @@ namespace GuessNumber
         {
             return new GameTask
             {
-                Task = $"{_convertNumber.Execute(a)} {operation} {_convertNumber.Execute(b)} = {_convertNumber.Execute(c)}",
+                Task = $"{_convertNumber.Value.Execute(a)} {operation} {_convertNumber.Value.Execute(b)} = {_convertNumber.Value.Execute(c)}",
                 Answer = answer
             };
         }

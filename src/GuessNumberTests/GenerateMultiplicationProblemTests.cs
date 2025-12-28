@@ -21,7 +21,7 @@ namespace GuessNumberTests
                 .Returns(3) // b
                 .Returns(1); // case
 
-            var sut = new GenerateMultiplicationProblem(mockGetRandomInt.Object, mockCreateGameTask.Object);
+            var sut = new GenerateMultiplicationProblem(LazyHelper.ToLazy(mockGetRandomInt.Object), LazyHelper.ToLazy(mockCreateGameTask.Object));
 
             // Act
             sut.Execute();
@@ -43,7 +43,7 @@ namespace GuessNumberTests
                 .Returns(3) // b
                 .Returns(2); // case
 
-            var sut = new GenerateMultiplicationProblem(mockGetRandomInt.Object, mockCreateGameTask.Object);
+            var sut = new GenerateMultiplicationProblem(LazyHelper.ToLazy(mockGetRandomInt.Object), LazyHelper.ToLazy(mockCreateGameTask.Object));
 
             // Act
             sut.Execute();
@@ -65,7 +65,7 @@ namespace GuessNumberTests
                 .Returns(3) // b
                 .Returns(3); // invalid case
 
-            var sut = new GenerateMultiplicationProblem(mockGetRandomInt.Object, mockCreateGameTask.Object);
+            var sut = new GenerateMultiplicationProblem(LazyHelper.ToLazy(mockGetRandomInt.Object), LazyHelper.ToLazy(mockCreateGameTask.Object));
 
             // Act & Assert
             Assert.Throws<InvalidOperationException>(() => sut.Execute());

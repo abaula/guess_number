@@ -5,11 +5,11 @@ namespace GuessNumber
     /// <inheritdoc/>
     class PrintAnswerIsCorrect : IPrintAnswerIsCorrect
     {
-        private readonly IGetResourceText _getResourceText;
-        private readonly IWriteToConsole _writeToConsole;
+        private readonly Lazy<IGetResourceText> _getResourceText;
+        private readonly Lazy<IWriteToConsole> _writeToConsole;
 
-        public PrintAnswerIsCorrect(IGetResourceText getResourceText,
-            IWriteToConsole writeToConsole)
+        public PrintAnswerIsCorrect(Lazy<IGetResourceText> getResourceText,
+            Lazy<IWriteToConsole> writeToConsole)
         {
             _getResourceText = getResourceText;
             _writeToConsole = writeToConsole;
@@ -17,14 +17,14 @@ namespace GuessNumber
 
         public void Execute(int answer)
         {
-            var template = _getResourceText.Execute(AppConst.Resources.AnswerIsCorrectTemplate);
+            var template = _getResourceText.Value.Execute(AppConst.Resources.AnswerIsCorrectTemplate);
 
             if (string.IsNullOrWhiteSpace(template))
                 return;
 
             var message = template.Replace(AppConst.Placeholders.Answer, answer.ToString());
 
-            _writeToConsole.Execute(message);
+            _writeToConsole.Value.Execute(message);
         }
     }
 }

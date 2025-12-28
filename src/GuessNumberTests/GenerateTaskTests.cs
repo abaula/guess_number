@@ -20,11 +20,11 @@ namespace GuessNumberTests
             mockGetRandomInt.Setup(x => x.Execute(It.IsAny<int>(), It.IsAny<int>()))
                 .Returns(1); // case
 
-            var sut = new GenerateTask(mockGetRandomInt.Object,
-                mockGenerateAdditionProblem.Object,
-                mockGenerateSubstractionProblem.Object,
-                mockGenerateMultiplicationProblem.Object,
-                mockGenerateDivisionProblem.Object);
+            var sut = new GenerateTask(LazyHelper.ToLazy(mockGetRandomInt.Object),
+                LazyHelper.ToLazy(mockGenerateAdditionProblem.Object),
+                LazyHelper.ToLazy(mockGenerateSubstractionProblem.Object),
+                LazyHelper.ToLazy(mockGenerateMultiplicationProblem.Object),
+                LazyHelper.ToLazy(mockGenerateDivisionProblem.Object));
 
             // Act
             sut.Execute();
@@ -50,11 +50,11 @@ namespace GuessNumberTests
             mockGetRandomInt.Setup(x => x.Execute(It.IsAny<int>(), It.IsAny<int>()))
                 .Returns(2); // case
 
-            var sut = new GenerateTask(mockGetRandomInt.Object,
-                mockGenerateAdditionProblem.Object,
-                mockGenerateSubstractionProblem.Object,
-                mockGenerateMultiplicationProblem.Object,
-                mockGenerateDivisionProblem.Object);
+            var sut = new GenerateTask(LazyHelper.ToLazy(mockGetRandomInt.Object),
+                LazyHelper.ToLazy(mockGenerateAdditionProblem.Object),
+                LazyHelper.ToLazy(mockGenerateSubstractionProblem.Object),
+                LazyHelper.ToLazy(mockGenerateMultiplicationProblem.Object),
+                LazyHelper.ToLazy(mockGenerateDivisionProblem.Object));
 
             // Act
             sut.Execute();
@@ -80,11 +80,11 @@ namespace GuessNumberTests
             mockGetRandomInt.Setup(x => x.Execute(It.IsAny<int>(), It.IsAny<int>()))
                 .Returns(3); // case
 
-            var sut = new GenerateTask(mockGetRandomInt.Object,
-                mockGenerateAdditionProblem.Object,
-                mockGenerateSubstractionProblem.Object,
-                mockGenerateMultiplicationProblem.Object,
-                mockGenerateDivisionProblem.Object);
+            var sut = new GenerateTask(LazyHelper.ToLazy(mockGetRandomInt.Object),
+                LazyHelper.ToLazy(mockGenerateAdditionProblem.Object),
+                LazyHelper.ToLazy(mockGenerateSubstractionProblem.Object),
+                LazyHelper.ToLazy(mockGenerateMultiplicationProblem.Object),
+                LazyHelper.ToLazy(mockGenerateDivisionProblem.Object));
 
             // Act
             sut.Execute();
@@ -110,11 +110,11 @@ namespace GuessNumberTests
             mockGetRandomInt.Setup(x => x.Execute(It.IsAny<int>(), It.IsAny<int>()))
                 .Returns(4); // case
 
-            var sut = new GenerateTask(mockGetRandomInt.Object,
-                mockGenerateAdditionProblem.Object,
-                mockGenerateSubstractionProblem.Object,
-                mockGenerateMultiplicationProblem.Object,
-                mockGenerateDivisionProblem.Object);
+            var sut = new GenerateTask(LazyHelper.ToLazy(mockGetRandomInt.Object),
+                LazyHelper.ToLazy(mockGenerateAdditionProblem.Object),
+                LazyHelper.ToLazy(mockGenerateSubstractionProblem.Object),
+                LazyHelper.ToLazy(mockGenerateMultiplicationProblem.Object),
+                LazyHelper.ToLazy(mockGenerateDivisionProblem.Object));
 
             // Act
             sut.Execute();
@@ -140,11 +140,11 @@ namespace GuessNumberTests
             mockGetRandomInt.Setup(x => x.Execute(It.IsAny<int>(), It.IsAny<int>()))
                 .Returns(5); // invalid case
 
-            var sut = new GenerateTask(mockGetRandomInt.Object,
-                mockGenerateAdditionProblem.Object,
-                mockGenerateSubstractionProblem.Object,
-                mockGenerateMultiplicationProblem.Object,
-                mockGenerateDivisionProblem.Object);
+            var sut = new GenerateTask(LazyHelper.ToLazy(mockGetRandomInt.Object),
+                LazyHelper.ToLazy(mockGenerateAdditionProblem.Object),
+                LazyHelper.ToLazy(mockGenerateSubstractionProblem.Object),
+                LazyHelper.ToLazy(mockGenerateMultiplicationProblem.Object),
+                LazyHelper.ToLazy(mockGenerateDivisionProblem.Object));
 
             // Act & Assert
             Assert.Throws<InvalidOperationException>(() => sut.Execute());

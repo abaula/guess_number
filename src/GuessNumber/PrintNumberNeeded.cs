@@ -5,11 +5,11 @@ namespace GuessNumber
     /// <inheritdoc/>
     class PrintNumberNeeded : IPrintNumberNeeded
     {
-        private readonly IGetResourceText _getResourceText;
-        private readonly IWriteToConsole _writeToConsole;
+        private readonly Lazy<IGetResourceText> _getResourceText;
+        private readonly Lazy<IWriteToConsole> _writeToConsole;
 
-        public PrintNumberNeeded(IGetResourceText getResourceText,
-            IWriteToConsole writeToConsole)
+        public PrintNumberNeeded(Lazy<IGetResourceText> getResourceText,
+            Lazy<IWriteToConsole> writeToConsole)
         {
             _getResourceText = getResourceText;
             _writeToConsole = writeToConsole;
@@ -17,12 +17,12 @@ namespace GuessNumber
 
         public void Execute()
         {
-            var message = _getResourceText.Execute(AppConst.Resources.NumberNeeded);
+            var message = _getResourceText.Value.Execute(AppConst.Resources.NumberNeeded);
 
             if (string.IsNullOrWhiteSpace(message))
                 return;
 
-            _writeToConsole.Execute(message);
+            _writeToConsole.Value.Execute(message);
         }
     }
 }

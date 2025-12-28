@@ -5,9 +5,9 @@ namespace GuessNumber
     /// <inheritdoc/>
     class ChooseContinueOrExit : IChooseContinueOrExit
     {
-        private readonly IPrintChooseContinueOrExit _printChooseContinueOrExit;
+        private readonly Lazy<IPrintChooseContinueOrExit> _printChooseContinueOrExit;
 
-        public ChooseContinueOrExit(IPrintChooseContinueOrExit printChooseContinueOrExit)
+        public ChooseContinueOrExit(Lazy<IPrintChooseContinueOrExit> printChooseContinueOrExit)
         {
             _printChooseContinueOrExit = printChooseContinueOrExit;
         }
@@ -15,7 +15,7 @@ namespace GuessNumber
         public ContinueOrExit Execute()
         {
             // Печатаем правила выбора решения продолжить или выйти.
-            _printChooseContinueOrExit.Execute();
+            _printChooseContinueOrExit.Value.Execute();
 
             // Получаем и обрабатываем решение пользователя.
             var key = Console.ReadKey(true);

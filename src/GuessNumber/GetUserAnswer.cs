@@ -5,13 +5,13 @@ namespace GuessNumber
     /// <inheritdoc/>
     class GetUserAnswer : IGetUserAnswer
     {
-        private readonly IGetUserAnswerInput _getUserAnswerInput;
-        private readonly IConvertInputToNumber _convertInputToNumber;
-        private readonly IPrintNumberNeeded _printNumberNeeded;
+        private readonly Lazy<IGetUserAnswerInput> _getUserAnswerInput;
+        private readonly Lazy<IConvertInputToNumber> _convertInputToNumber;
+        private readonly Lazy<IPrintNumberNeeded> _printNumberNeeded;
 
-        public GetUserAnswer(IGetUserAnswerInput getUserAnswerInput,
-            IConvertInputToNumber convertInputToNumber,
-            IPrintNumberNeeded printNumberNeeded)
+        public GetUserAnswer(Lazy<IGetUserAnswerInput> getUserAnswerInput,
+            Lazy<IConvertInputToNumber> convertInputToNumber,
+            Lazy<IPrintNumberNeeded> printNumberNeeded)
         {
             _getUserAnswerInput = getUserAnswerInput;
             _convertInputToNumber = convertInputToNumber;
@@ -23,18 +23,18 @@ namespace GuessNumber
             while (true)
             {
                 // Получаем и обрабатываем решение пользователя.
-                var inputStr = _getUserAnswerInput.Execute();
+                var inputStr = _getUserAnswerInput.Value.Execute();
 
                 if (string.IsNullOrWhiteSpace(inputStr))
                     return default;
 
-                var number = _convertInputToNumber.Execute(inputStr);
+                var number = _convertInputToNumber.Value.Execute(inputStr);
 
                 if (number.HasValue)
                     return number;
 
                 // Печатаем предупреждение, что нужно вводить только число.
-                _printNumberNeeded.Execute();
+                _printNumberNeeded.Value.Execute();
             }
         }
     }

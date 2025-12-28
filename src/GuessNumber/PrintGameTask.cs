@@ -5,11 +5,11 @@ namespace GuessNumber
     /// <inheritdoc/>
     class PrintGameTask : IPrintGameTask
     {
-        private readonly IGetResourceText _getResourceText;
-        private readonly IWriteToConsole _writeToConsole;
+        private readonly Lazy<IGetResourceText> _getResourceText;
+        private readonly Lazy<IWriteToConsole> _writeToConsole;
 
-        public PrintGameTask(IGetResourceText getResourceText,
-            IWriteToConsole writeToConsole)
+        public PrintGameTask(Lazy<IGetResourceText> getResourceText,
+            Lazy<IWriteToConsole> writeToConsole)
         {
             _getResourceText = getResourceText;
             _writeToConsole = writeToConsole;
@@ -17,13 +17,13 @@ namespace GuessNumber
 
         public void Execute(GameTask gameTask)
         {
-            var template = _getResourceText.Execute(AppConst.Resources.GameTaskTemplate);
+            var template = _getResourceText.Value.Execute(AppConst.Resources.GameTaskTemplate);
 
             if (string.IsNullOrWhiteSpace(template))
                 return;
 
             var message = template.Replace(AppConst.Placeholders.GameTask, gameTask.Task);
-            _writeToConsole.Execute(message);
+            _writeToConsole.Value.Execute(message);
         }
     }
 }

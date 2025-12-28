@@ -5,19 +5,19 @@ namespace GuessNumber
     /// <inheritdoc/>
     class Play : IPlay
     {
-        private readonly IGenerateTask _generateTask;
-        private readonly IPrintGameTask _printGameTask;
-        private readonly IGetUserAnswer _getUserAnswer;
-        private readonly ICheckUserAnswer _checkUserAnswer;
-        private readonly IPrintAnswerIsCorrect _printAnswerIsCorrect;
-        private readonly IPrintAnswerIsIncorrect _printAnswerIsIncorrect;
+        private readonly Lazy<IGenerateTask> _generateTask;
+        private readonly Lazy<IPrintGameTask> _printGameTask;
+        private readonly Lazy<IGetUserAnswer> _getUserAnswer;
+        private readonly Lazy<ICheckUserAnswer> _checkUserAnswer;
+        private readonly Lazy<IPrintAnswerIsCorrect> _printAnswerIsCorrect;
+        private readonly Lazy<IPrintAnswerIsIncorrect> _printAnswerIsIncorrect;
 
-        public Play(IGenerateTask generateTask,
-            IPrintGameTask printGameTask,
-            IGetUserAnswer getUserAnswer,
-            ICheckUserAnswer checkUserAnswer,
-            IPrintAnswerIsCorrect printAnswerIsCorrect,
-            IPrintAnswerIsIncorrect printAnswerIsIncorrect)
+        public Play(Lazy<IGenerateTask> generateTask,
+            Lazy<IPrintGameTask> printGameTask,
+            Lazy<IGetUserAnswer> getUserAnswer,
+            Lazy<ICheckUserAnswer> checkUserAnswer,
+            Lazy<IPrintAnswerIsCorrect> printAnswerIsCorrect,
+            Lazy<IPrintAnswerIsIncorrect> printAnswerIsIncorrect)
         {
             _generateTask = generateTask;
             _printGameTask = printGameTask;
@@ -30,29 +30,29 @@ namespace GuessNumber
         public void Execute()
         {
             // Создаём задание.
-            var task = _generateTask.Execute();
+            var task = _generateTask.Value.Execute();
             // Печатаем задание для пользователя.
-            _printGameTask.Execute(task);
+            _printGameTask.Value.Execute(task);
 
             while (true)
             {
                 // Получаем ответ пользователя.
-                var userAnswer = _getUserAnswer.Execute();
+                var userAnswer = _getUserAnswer.Value.Execute();
 
                 // Если ответа нет, то выходим из игры.
                 if (userAnswer.HasValue == false)
                     return;
 
                 // Оцениваем ответ.
-                if (_checkUserAnswer.Execute(task, userAnswer.Value))
+                if (_checkUserAnswer.Value.Execute(task, userAnswer.Value))
                 // ... Если ответ верный, то сообщаем пользователю и выходим.
                 {
-                    _printAnswerIsCorrect.Execute(userAnswer.Value);
+                    _printAnswerIsCorrect.Value.Execute(userAnswer.Value);
                     return;
                 }
 
                 // Сообщаем, что ответ неверный и продолжаем.
-                _printAnswerIsIncorrect.Execute(userAnswer.Value);
+                _printAnswerIsIncorrect.Value.Execute(userAnswer.Value);
             }
         }
     }

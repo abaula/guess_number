@@ -19,8 +19,8 @@ namespace GuessNumberTests
             mockGetResourceText.Setup(x => x.Execute(resourceName))
                 .Returns((string?)null); // no template
 
-            var sut = new PrintGameTask(mockGetResourceText.Object,
-                mockWriteToConsole.Object);
+            var sut = new PrintGameTask(LazyHelper.ToLazy(mockGetResourceText.Object),
+                LazyHelper.ToLazy(mockWriteToConsole.Object));
 
             // Act
             sut.Execute(gameTask);
@@ -42,8 +42,8 @@ namespace GuessNumberTests
             mockGetResourceText.Setup(x => x.Execute(resourceName))
                 .Returns("SomeTemplate");
 
-            var sut = new PrintGameTask(mockGetResourceText.Object,
-                mockWriteToConsole.Object);
+            var sut = new PrintGameTask(LazyHelper.ToLazy(mockGetResourceText.Object),
+                LazyHelper.ToLazy(mockWriteToConsole.Object));
 
             // Act
             sut.Execute(gameTask);
