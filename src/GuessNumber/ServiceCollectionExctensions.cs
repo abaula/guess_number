@@ -9,7 +9,7 @@ namespace GuessNumber
             where TImplementation : class, TService
         {
             services.AddScoped<TService, TImplementation>();
-            services.AddScoped<Lazy<TService>>();
+            services.AddScoped(_ => new Lazy<TService>(() => _.GetRequiredService<TService>()));
             return services;
         }
 
@@ -18,7 +18,7 @@ namespace GuessNumber
             where TImplementation : class, TService
         {
             services.AddSingleton<TService, TImplementation>();
-            services.AddSingleton<Lazy<TService>>();
+            services.AddSingleton(_ => new Lazy<TService>(() => _.GetRequiredService<TService>()));
             return services;
         }
     }
