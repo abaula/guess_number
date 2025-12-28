@@ -10,30 +10,30 @@ namespace GuessNumber
     {
         public static void Setup(IServiceCollection services)
         {
-            services.AddScoped<IGuessGame, GuessGame>();
-            services.AddScoped<IConvertInputToNumber, ConvertInputToNumber>();
-            services.AddScoped<IPrintRules, PrintRules>();
-            services.AddScoped<IGetResourceText, GetResourceText>();
-            services.AddScoped<IWriteToConsole, WriteToConsole>();
-            services.AddScoped<IChooseContinueOrExit, ChooseContinueOrExit>();
-            services.AddScoped<IPrintBye, PrintBye>();
-            services.AddScoped<IPlay, Play>();
-            services.AddScoped<IPrintChooseContinueOrExit, PrintChooseContinueOrExit>();
-            services.AddScoped<IGenerateTask, GenerateTask>();
-            services.AddScoped<IPrintGameTask, PrintGameTask>();
-            services.AddScoped<IGetUserAnswer, GetUserAnswer>();
-            services.AddScoped<ICheckUserAnswer, CheckUserAnswer>();
-            services.AddScoped<IPrintAnswerIsCorrect, PrintAnswerIsCorrect>();
-            services.AddScoped<IPrintAnswerIsIncorrect, PrintAnswerIsIncorrect>();
-            services.AddScoped<IGetUserAnswerInput, GetUserAnswerInput>();
-            services.AddScoped<IPrintNumberNeeded, PrintNumberNeeded>();
-            services.AddSingleton<IGetRandomInt, GetRandomInt>();
-            services.AddScoped<IGenerateAdditionProblem, GenerateAdditionProblem>();
-            services.AddScoped<IGenerateSubstractionProblem, GenerateSubstractionProblem>();
-            services.AddScoped<IGenerateMultiplicationProblem, GenerateMultiplicationProblem>();
-            services.AddScoped<IGenerateDivisionProblem, GenerateDivisionProblem>();
-            services.AddScoped<ICreateGameTask, CreateGameTask>();
-            services.AddSingleton<IConvertNumberToStringOrQuestionSign, ConvertNumberToStringOrQuestionSign>();
+            services.AddScopedWithLazy<IGuessGame, GuessGame>();
+            services.AddScopedWithLazy<IConvertInputToNumber, ConvertInputToNumber>();
+            services.AddScopedWithLazy<IPrintRules, PrintRules>();
+            services.AddScopedWithLazy<IGetResourceText, GetResourceText>();
+            services.AddScopedWithLazy<IWriteToConsole, WriteToConsole>();
+            services.AddScopedWithLazy<IChooseContinueOrExit, ChooseContinueOrExit>();
+            services.AddScopedWithLazy<IPrintBye, PrintBye>();
+            services.AddScopedWithLazy<IPlay, Play>();
+            services.AddScopedWithLazy<IPrintChooseContinueOrExit, PrintChooseContinueOrExit>();
+            services.AddScopedWithLazy<IGenerateTask, GenerateTask>();
+            services.AddScopedWithLazy<IPrintGameTask, PrintGameTask>();
+            services.AddScopedWithLazy<IGetUserAnswer, GetUserAnswer>();
+            services.AddScopedWithLazy<ICheckUserAnswer, CheckUserAnswer>();
+            services.AddScopedWithLazy<IPrintAnswerIsCorrect, PrintAnswerIsCorrect>();
+            services.AddScopedWithLazy<IPrintAnswerIsIncorrect, PrintAnswerIsIncorrect>();
+            services.AddScopedWithLazy<IGetUserAnswerInput, GetUserAnswerInput>();
+            services.AddScopedWithLazy<IPrintNumberNeeded, PrintNumberNeeded>();
+            services.AddSingletonWithLazy<IGetRandomInt, GetRandomInt>();
+            services.AddScopedWithLazy<IGenerateAdditionProblem, GenerateAdditionProblem>();
+            services.AddScopedWithLazy<IGenerateSubstractionProblem, GenerateSubstractionProblem>();
+            services.AddScopedWithLazy<IGenerateMultiplicationProblem, GenerateMultiplicationProblem>();
+            services.AddScopedWithLazy<IGenerateDivisionProblem, GenerateDivisionProblem>();
+            services.AddScopedWithLazy<ICreateGameTask, CreateGameTask>();
+            services.AddSingletonWithLazy<IConvertNumberToStringOrQuestionSign, ConvertNumberToStringOrQuestionSign>();
         }
     }
 }

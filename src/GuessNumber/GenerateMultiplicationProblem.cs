@@ -6,11 +6,11 @@ namespace GuessNumber
     class GenerateMultiplicationProblem : IGenerateMultiplicationProblem
     {
         private const string Operation = "*";
-        private readonly IGetRandomInt _getRandomInt;
-        private readonly ICreateGameTask _createGameTask;
+        private readonly Lazy<IGetRandomInt> _getRandomInt;
+        private readonly Lazy<ICreateGameTask> _createGameTask;
 
-        public GenerateMultiplicationProblem(IGetRandomInt getRandomInt,
-            ICreateGameTask createGameTask)
+        public GenerateMultiplicationProblem(Lazy<IGetRandomInt> getRandomInt,
+            Lazy<ICreateGameTask> createGameTask)
         {
             _getRandomInt = getRandomInt;
             _createGameTask = createGameTask;
@@ -18,16 +18,16 @@ namespace GuessNumber
 
         public GameTask Execute()
         {
-            var a = _getRandomInt.Execute(0, 9);
-            var b = _getRandomInt.Execute(0, 9);
+            var a = _getRandomInt.Value.Execute(1, 9);
+            var b = _getRandomInt.Value.Execute(1, 9);
             var c = a * b;
 
-            switch (_getRandomInt.Execute(1, 2))
+            switch (_getRandomInt.Value.Execute(1, 2))
             {
                 case 1:
-                    return _createGameTask.Execute(default, b, c, a, Operation);
+                    return _createGameTask.Value.Execute(default, b, c, a, Operation);
                 case 2:
-                    return _createGameTask.Execute(a, default, c, b, Operation);
+                    return _createGameTask.Value.Execute(a, default, c, b, Operation);
                 default:
                     throw new InvalidOperationException();
             }

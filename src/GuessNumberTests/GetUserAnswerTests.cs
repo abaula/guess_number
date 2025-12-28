@@ -17,9 +17,9 @@ namespace GuessNumberTests
 
             mockGetUserAnswerInput.Setup(x => x.Execute()).Returns((string?)null);
 
-            var sut = new GetUserAnswer(mockGetUserAnswerInput.Object,
-                mockConvertInputToNumber.Object,
-                mockPrintNumberNeeded.Object);
+            var sut = new GetUserAnswer(LazyHelper.ToLazy(mockGetUserAnswerInput.Object),
+                LazyHelper.ToLazy(mockConvertInputToNumber.Object),
+                LazyHelper.ToLazy(mockPrintNumberNeeded.Object));
 
             // Act
             var actual = sut.Execute();
@@ -42,9 +42,9 @@ namespace GuessNumberTests
             mockGetUserAnswerInput.Setup(x => x.Execute()).Returns("Anything");
             mockConvertInputToNumber.Setup(x => x.Execute("Anything")).Returns(5);
 
-            var sut = new GetUserAnswer(mockGetUserAnswerInput.Object,
-                mockConvertInputToNumber.Object,
-                mockPrintNumberNeeded.Object);
+            var sut = new GetUserAnswer(LazyHelper.ToLazy(mockGetUserAnswerInput.Object),
+                LazyHelper.ToLazy(mockConvertInputToNumber.Object),
+                LazyHelper.ToLazy(mockPrintNumberNeeded.Object));
 
             // Act
             var actual = sut.Execute();
@@ -71,9 +71,9 @@ namespace GuessNumberTests
                 .Returns((int?)null)
                 .Returns(5);
 
-            var sut = new GetUserAnswer(mockGetUserAnswerInput.Object,
-                mockConvertInputToNumber.Object,
-                mockPrintNumberNeeded.Object);
+            var sut = new GetUserAnswer(LazyHelper.ToLazy(mockGetUserAnswerInput.Object),
+                LazyHelper.ToLazy(mockConvertInputToNumber.Object),
+                LazyHelper.ToLazy(mockPrintNumberNeeded.Object));
 
             // Act
             var actual = sut.Execute();

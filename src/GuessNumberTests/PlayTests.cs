@@ -22,12 +22,12 @@ namespace GuessNumberTests
             mockGenerateTask.Setup(x => x.Execute()).Returns(gameTask);
             mockGetUserAnswer.Setup(x => x.Execute()).Returns((int?)null); // no answer
 
-            var sut = new Play(mockGenerateTask.Object,
-                mockPrintGameTask.Object,
-                mockGetUserAnswer.Object,
-                mockCheckUserAnswer.Object,
-                mockPrintAnswerIsCorrect.Object,
-                mockPrintAnswerIsIncorrect.Object);
+            var sut = new Play(LazyHelper.ToLazy(mockGenerateTask.Object),
+                LazyHelper.ToLazy(mockPrintGameTask.Object),
+                LazyHelper.ToLazy(mockGetUserAnswer.Object),
+                LazyHelper.ToLazy(mockCheckUserAnswer.Object),
+                LazyHelper.ToLazy(mockPrintAnswerIsCorrect.Object),
+                LazyHelper.ToLazy(mockPrintAnswerIsIncorrect.Object));
 
             // Act
             sut.Execute();
@@ -58,12 +58,12 @@ namespace GuessNumberTests
             mockGetUserAnswer.Setup(x => x.Execute()).Returns(answer);
             mockCheckUserAnswer.Setup(x => x.Execute(gameTask, answer)).Returns(true);
 
-            var sut = new Play(mockGenerateTask.Object,
-                mockPrintGameTask.Object,
-                mockGetUserAnswer.Object,
-                mockCheckUserAnswer.Object,
-                mockPrintAnswerIsCorrect.Object,
-                mockPrintAnswerIsIncorrect.Object);
+            var sut = new Play(LazyHelper.ToLazy(mockGenerateTask.Object),
+                LazyHelper.ToLazy(mockPrintGameTask.Object),
+                LazyHelper.ToLazy(mockGetUserAnswer.Object),
+                LazyHelper.ToLazy(mockCheckUserAnswer.Object),
+                LazyHelper.ToLazy(mockPrintAnswerIsCorrect.Object),
+                LazyHelper.ToLazy(mockPrintAnswerIsIncorrect.Object));
 
             // Act
             sut.Execute();
@@ -96,12 +96,12 @@ namespace GuessNumberTests
                 .Returns((int?)null);
             mockCheckUserAnswer.Setup(x => x.Execute(gameTask, answer)).Returns(false);
 
-            var sut = new Play(mockGenerateTask.Object,
-                mockPrintGameTask.Object,
-                mockGetUserAnswer.Object,
-                mockCheckUserAnswer.Object,
-                mockPrintAnswerIsCorrect.Object,
-                mockPrintAnswerIsIncorrect.Object);
+            var sut = new Play(LazyHelper.ToLazy(mockGenerateTask.Object),
+                LazyHelper.ToLazy(mockPrintGameTask.Object),
+                LazyHelper.ToLazy(mockGetUserAnswer.Object),
+                LazyHelper.ToLazy(mockCheckUserAnswer.Object),
+                LazyHelper.ToLazy(mockPrintAnswerIsCorrect.Object),
+                LazyHelper.ToLazy(mockPrintAnswerIsIncorrect.Object));
 
             // Act
             sut.Execute();

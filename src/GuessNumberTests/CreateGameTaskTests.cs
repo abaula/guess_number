@@ -14,7 +14,7 @@ namespace GuessNumberTests
             var mockConverter = new Mock<IConvertNumberToStringOrQuestionSign>();
             mockConverter.Setup(m => m.Execute(It.IsAny<int?>())).Returns("_");
 
-            var sut = new CreateGameTask(mockConverter.Object);
+            var sut = new CreateGameTask(LazyHelper.ToLazy(mockConverter.Object));
 
             // Act
             var result = sut.Execute(null, null, null, 0, "*");

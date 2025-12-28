@@ -5,15 +5,15 @@ namespace GuessNumber
     /// <inheritdoc/>
     class GuessGame : IGuessGame
     {
-        private readonly IPrintRules _printRules;
-        private readonly IPrintBye _printBye;
-        private readonly IChooseContinueOrExit _chooseContinueOrExit;
-        private readonly IPlay _play;
+        private readonly Lazy<IPrintRules> _printRules;
+        private readonly Lazy<IPrintBye> _printBye;
+        private readonly Lazy<IChooseContinueOrExit> _chooseContinueOrExit;
+        private readonly Lazy<IPlay> _play;
 
-        public GuessGame(IPrintRules printRules,
-            IPrintBye printBye,
-            IChooseContinueOrExit chooseContinueOrExit,
-            IPlay play)
+        public GuessGame(Lazy<IPrintRules> printRules,
+            Lazy<IPrintBye> printBye,
+            Lazy<IChooseContinueOrExit> chooseContinueOrExit,
+            Lazy<IPlay> play)
         {
             _printRules = printRules;
             _printBye = printBye;
@@ -24,19 +24,19 @@ namespace GuessNumber
         public void Execute()
         {
             // Печатаем правила игры.
-            _printRules.Execute();
+            _printRules.Value.Execute();
 
             // Играем.
             var continueOrExit = ContinueOrExit.Continue;
 
             while (continueOrExit == ContinueOrExit.Continue)
             {
-                _play.Execute();
-                continueOrExit = _chooseContinueOrExit.Execute();
+                _play.Value.Execute();
+                continueOrExit = _chooseContinueOrExit.Value.Execute();
             }
 
             // Печатаем прощание.
-            _printBye.Execute();
+            _printBye.Value.Execute();
         }
     }
 }
