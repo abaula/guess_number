@@ -2,7 +2,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace GuessNumber
 {
-    static class ServiceCollectionExctensions
+    /// <summary>
+    /// Расширение для регистрации в контейнере типов вместе с Lazy.
+    /// </summary>
+    static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddScopedWithLazy<TService, TImplementation>(this IServiceCollection services)
             where TService : class
